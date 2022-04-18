@@ -1,0 +1,2 @@
+#!/bin/sh
+librewolf -new-window https://www.4chan.org/

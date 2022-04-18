@@ -1,0 +1,2 @@
+#!/bin/sh
+echo " Current todo: $(sed -n '6,6p' "/home/bruh/vimwiki/todo.wiki" | awk -F'] ' {' print $2'})"

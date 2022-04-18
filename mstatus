@@ -1,0 +1,7 @@
+#!/bin/sh
+m=$(mpc status | sed -n '2,2p' | grep "playing" -c)
+
+if [ $m -eq 1 ]
+then
+  echo  $(mpc status | sed -n '1,1p')
+fi

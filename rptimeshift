@@ -1,0 +1,2 @@
+#!/bin/sh
+doas timeshift --delete --snapshot $(doas timeshift --list | grep "0    >  " | awk '{ print $3 }')

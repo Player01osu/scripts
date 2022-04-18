@@ -1,0 +1,14 @@
+#!/bin/sh
+du ~/.config -aLd 4 -S --exclude='obs-studio'\
+    --exclude='lutris' --exclude='pulse'\
+    --exclude='BraveSoftware' --exclude='.git'\
+    --exclude='*runtime' --exclude='*.o'\
+    --exclude='nuclear' --exclude='*.png'\
+    --exclude='*.jpg' --exclude='\.git*'\
+    --exclude='VSCodium' --exclude='VirtualBox'\
+    --exclude='.lock' --exclude='Signal'\
+    --exclude='GIMP' --exclude='discord'\
+    --exclude='Element' --exclude='libreoffice'\
+    --exclude='libvirt' --exclude='qt5ct'\
+    | awk '{ print $2}' | fzf --no-info | \
+    xargs -r nvim

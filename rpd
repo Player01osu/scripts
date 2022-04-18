@@ -1,0 +1,5 @@
+#!/bin/sh
+killall mpd
+killall mpDris2
+mpd &
+mpDris2 &

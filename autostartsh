@@ -1,0 +1,41 @@
+#!/bin/sh
+
+# sets keyboard repeat rate
+xset r rate 250 40
+
+# kill from previous session
+pkill pipewire-pulse
+pkill pipewire
+pkill wireplumber
+
+pkill sxhkd
+pkill dwmblocks
+
+killall mpd
+pkill mpDris2
+
+# numlock activate
+exec numlockx &
+
+# compositor
+exec picom --experimental-backends &
+
+# audio server
+exec /usr/bin/pipewire &
+exec /usr/bin/pipewire-pulse &
+exec /usr/bin/wireplumber &
+
+# keyboard shortcuts
+pkill sxhkd
+exec sxhkd -c ~/.config/sxhkd/sxhkdrc &
+
+mpd &
+mpDris2 &
+
+brightnessctl s 11%
+
+# input thingy
+exec touchsets &
+exec unclutter --timeout 3 &
+
+exec dwmblocks &

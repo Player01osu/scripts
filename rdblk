@@ -1,0 +1,6 @@
+#!/bin/sh
+pkill dwmblocks
+wait
+sleep 1s
+wait
+exec dwmblocks &

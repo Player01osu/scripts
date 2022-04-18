@@ -1,0 +1,11 @@
+#!/bin/sh
+FSEL="$(find ~/Videos/not-anime/ -type f| \
+    awk -F'/' '{ print $NF }' | fzf --no-info)"
+
+if [ -z "$FSEL" ]
+then
+    exit
+fi
+
+devour mpv "$(find ~/Videos/not-anime -type f | fgrep "$FSEL")"
+

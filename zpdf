@@ -1,0 +1,2 @@
+#!/bin/sh
+/usr/bin/ls *.pdf | fzf --no-info | sed 's| |\\ |g' | xargs -r devour zathura
