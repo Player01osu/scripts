@@ -3,5 +3,6 @@ m=$(mpc status | sed -n '2,2p' | grep "playing" -c)
 
 if [ $m -eq 1 ]
 then
-  echo  $(mpc status | sed -n '1,1p')
+  echo ^c#282a36^ ^b#ffb86c^  ^b#e9a760^ $(mpc status | sed -n '1,1p')
+  return
 fi

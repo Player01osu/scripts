@@ -1,5 +1,5 @@
 #!/bin/sh
-xclip -o | sed 's|https://||g' | \
+xsel -bo | sed 's|https://||g' | \
     sed 's|www.||g' >> \
     ~/.local/share/bookmarks/bookmarks
 

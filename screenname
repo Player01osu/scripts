@@ -1,0 +1,4 @@
+#!/bin/sh
+maim -s ~/Pictures/Screenshots/$(dmenu -l 20\
+    -sb "#a62ca6" -i -p "Screenshot Name " -fn \
+    "JetBrains Mono:size=10:style=Bold:antialias=true:autohint=true" < /dev/null).png

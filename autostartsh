@@ -10,9 +10,15 @@ pkill wireplumber
 
 pkill sxhkd
 pkill dwmblocks
+pkill mpdup
 
 killall mpd
 pkill mpDris2
+
+killall keynav
+
+# wallpaper
+hsetroot -fill ~/Pictures/wallpapers/yuyuko.jpg
 
 # numlock activate
 exec numlockx &
@@ -31,8 +37,10 @@ exec sxhkd -c ~/.config/sxhkd/sxhkdrc &
 
 mpd &
 mpDris2 &
+exec mpdup &
 
 brightnessctl s 11%
+keynav &
 
 # input thingy
 exec touchsets &

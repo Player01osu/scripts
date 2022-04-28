@@ -1,0 +1,17 @@
+#!/bin/sh
+if [ $(acpi | awk -F, '{ print $2 }' | sed 's/%//g') -gt 92 ]
+then
+	echo " ^c#81A1C1^^b#373d49^ $(acpi | awk -F, '{ print $2 }')"
+elif [ $(acpi | awk -F, '{ print $2 }' | sed 's/%//g') -gt 76 ]
+then
+	echo " ^c#81A1C1^^b#373d49^ $(acpi | awk -F, '{ print $2 }')"
+elif [ $(acpi | awk -F, '{ print $2 }' | sed 's/%//g') -gt 40 ]
+then
+	echo " ^c#81A1C1^^b#373d49^ $(acpi | awk -F, '{ print $2 }')"
+elif [ $(acpi | awk -F, '{ print $2 }' | sed 's/%//g') -gt 14 ]
+then
+	echo " ^c#81A1C1^^b#373d49^ $(acpi | awk -F, '{ print $2 }')"
+elif [ $(acpi | awk -F, '{ print $2 }' | sed 's/%//g') -gt 1 ]
+then
+	echo " ^c#81A1C1^^b#373d49^ $(acpi | awk -F, '{ print $2 }')"
+fi
