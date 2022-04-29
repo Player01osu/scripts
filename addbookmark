@@ -1,4 +1,6 @@
 #!/bin/sh
+# add clipboard to browser bookmark file
+
 xsel -bo | sed 's|https://||g' | \
     sed 's|www.||g' >> \
     ~/.local/share/bookmarks/bookmarks

@@ -1,5 +1,6 @@
 #!/bin/sh
 # adds local script
+
 if [ -z "$1" ]
 then
   prompt () {

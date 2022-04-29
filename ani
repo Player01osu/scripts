@@ -1,4 +1,6 @@
 #!/bin/sh
+# fzf script for picking locally downloaded anime
+
 FSEL="$(find ~/Videos/not-anime/ -type f| \
     awk -F'/' '{ print $NF }' | fzf --no-info)"
 

@@ -1,0 +1,17 @@
+#!/bin/sh
+# change wallpaper using hsetroot
+WPPATH=$1
+
+if [ -z $WPPATH ] || [ $WPPATH = '-h' ] || [ $WPPATH = '--help' ]
+then
+	echo \
+	"\ncwp - change wallpaper
+\nUsage: cwp <filename>\n"
+	return 0
+fi
+
+rm -f ~/Pictures/wallpapers/wp.jpg 2>/dev/null
+
+ln $WPPATH ~/Pictures/wallpapers/wp.jpg \
+&& \
+hsetroot -cover ~/Pictures/wallpapers/wp.jpg

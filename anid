@@ -1,4 +1,6 @@
 #!/bin/sh
+# same as ani, except directory nav
+
 DSEL="$(find ~/Videos/not-anime/ -type d| \
     awk -F'/' '{ print $NF }' | fzf --no-info)"
 

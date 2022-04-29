@@ -1,4 +1,5 @@
 #!/bin/sh
+# start from startx or sx
 
 # sets keyboard repeat rate
 xset r rate 250 40
@@ -35,10 +36,12 @@ exec /usr/bin/wireplumber &
 pkill sxhkd
 exec sxhkd -c ~/.config/sxhkd/sxhkdrc &
 
+# mpd
 mpd &
 mpDris2 &
 exec mpdup &
 
+# set brightness
 brightnessctl s 11%
 keynav &
 
@@ -46,4 +49,5 @@ keynav &
 exec touchsets &
 exec unclutter --timeout 3 &
 
+# bar
 exec dwmblocks &
