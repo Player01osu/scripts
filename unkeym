@@ -1,0 +1,4 @@
+#!/bin/sh
+# toggle uncluter and keym
+# need unclutter and keym
+kill $(pgrep unclutter) && keym ; wait ; unclutter --start-hidden --timeout 3&
