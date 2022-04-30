@@ -16,8 +16,6 @@ pkill mpdup
 killall mpd
 pkill mpDris2
 
-killall keynav
-
 # wallpaper
 hsetroot -fill ~/Pictures/wallpapers/yuyuko.jpg
 
@@ -43,7 +41,6 @@ exec mpdup &
 
 # set brightness
 brightnessctl s 11%
-keynav &
 
 # input thingy
 exec touchsets &

@@ -1,2 +1,0 @@
-#!/bin/sh
-echo ^c#D8DEE9^^b#373d49^ $(du -sh ~/Pictures/banger | awk -F' ' {' print $1'})iB

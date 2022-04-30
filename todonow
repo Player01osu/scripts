@@ -1,2 +1,0 @@
-#!/bin/sh
-echo "^c#2E3440^^b#d6acff^  TODO ^c#44475a^^b#bd93f9^ $(sed -n '6,6p' "/home/bruh/vimwiki/todo.wiki" | awk -F'] ' {' print $2'}) ^d^"
