@@ -1,2 +1,2 @@
 #!/bin/sh
-echo ^c#d8d8d8^  Yuri Folder ^c#D8DEE9^^b#373d49^ $(du -sh ~/Pictures/banger | awk -F' ' {' print $1'})iB
+echo ^c#0f111a^^b#8e7cc3^  Yuri Folder ^c#a5a5a6^^b#373d49^ $(du -sh ~/Pictures/banger | awk -F' ' {' print $1'})iB

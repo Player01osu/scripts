@@ -1,2 +1,2 @@
 #!/bin/sh
-echo " ^c#373d49^^b#7aa2f7^  ^c#282c34^^b#668ee3^ $(date '+(%a) %d %b')"
+echo " ^c#373d49^^b#7aa2f7^  ^d^^c#668ee3^^b#373d49^ $(date '+(%a) %d %b')"
