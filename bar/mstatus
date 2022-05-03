@@ -1,2 +1,2 @@
 #!/bin/sh
-mpc | grep -q playing && echo ^c#373d49^ ^b#e9a760^  ^d^^c#e9a760^^b#373d49^ $(mpc current)
+mpc | grep -q playing && echo ^c#373d49^ ^b#e9a760^  ^b#e9a760^ ^d^^b#373d49^ ^c#e9a760^ $(mpc current)
