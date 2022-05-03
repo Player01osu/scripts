@@ -1,8 +1,2 @@
 #!/bin/sh
-m=$(mpc status | sed -n '2,2p' | grep "playing" -c)
-
-if [ $m -eq 1 ]
-then
-  echo ^c#373d49^ ^b#e9a760^  ^d^^c#e9a760^^b#373d49^ $(mpc status | sed -n '1,1p')
-  return
-fi
+mpc | grep -q playing && echo ^c#373d49^ ^b#e9a760^  ^d^^c#e9a760^^b#373d49^ $(mpc current)
