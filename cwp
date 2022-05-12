@@ -1,5 +1,4 @@
 #!/bin/sh
-# change wallpaper using hsetroot
 WPPATH=$1
 
 if [ -z $WPPATH ] || [ $WPPATH = '-h' ] || [ $WPPATH = '--help' ]

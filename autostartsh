@@ -1,5 +1,4 @@
 #!/bin/sh
-# start from startx or sx
 
 # sets keyboard repeat rate
 xset r rate 250 40
@@ -17,7 +16,7 @@ killall mpd
 pkill mpDris2
 
 # wallpaper
-hsetroot -fill ~/Pictures/wallpapers/yuyuko.jpg
+hsetroot -cover ~/Pictures/wallpapers/wp.jpg
 
 # numlock activate
 exec numlockx &
@@ -34,17 +33,14 @@ exec /usr/bin/wireplumber &
 pkill sxhkd
 exec sxhkd -c ~/.config/sxhkd/sxhkdrc &
 
-# mpd
 mpd &
 mpDris2 &
 exec mpdup &
 
-# set brightness
 brightnessctl s 11%
 
 # input thingy
 exec touchsets &
 exec unclutter --timeout 3 &
 
-# bar
 exec dwmblocks &

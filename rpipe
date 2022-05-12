@@ -1,6 +1,8 @@
 #!/bin/sh
 
-pkill pipewire
-/usr/bin/pipewire &
-/usr/bin/pipewire-pulse &
-/usr/bin/wireplumber &
+killall pipewire
+killall pipewire-pulse
+killall wireplumber
+exec /usr/bin/pipewire &
+exec /usr/bin/pipewire-pulse &
+exec /usr/bin/wireplumber &
