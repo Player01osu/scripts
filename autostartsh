@@ -35,7 +35,6 @@ exec sxhkd -c ~/.config/sxhkd/sxhkdrc &
 
 mpd &
 mpDris2 &
-exec mpdup &
 
 brightnessctl s 11%
 
