@@ -1,2 +1,2 @@
 #!/bin/sh
-echo "^c#353535^^b#b234c1^   ^c#ee7dfc^^b#2e2e2e^  $(sed -n '6,6p' "/home/bruh/.local/share/wiki/todo.wiki" | awk -F'] ' {' print $2'}) ^d^"
+echo "^c#353535^^b#b234c1^   ^c#ee7dfc^^b#2e2e2e^  $(sed -n '6,6p' "/home/bruh/Documents/wiki/todo.wiki" | awk -F'] ' {' print $2'}) ^d^"

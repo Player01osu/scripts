@@ -1,2 +1,2 @@
 #!/bin/sh
-nvim ~/.local/share/wiki/todo.wiki
+nvim ~/Documents/wiki/todo.wiki

@@ -33,8 +33,9 @@ exec /usr/bin/wireplumber &
 pkill sxhkd
 exec sxhkd -c ~/.config/sxhkd/sxhkdrc &
 
-mpd &
-mpDris2 &
+exec mpd &
+exec mpDris2 &
+exec mpdup &
 
 brightnessctl s 11%
 
