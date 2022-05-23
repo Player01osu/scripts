@@ -1,5 +1,5 @@
 #!/bin/sh
-USEL=$(dmenu -l 20 -sb "#a62ca6" -p "Remove bookmark " -fn \
+USEL=$(dmenu -l 20 -sb "#a62ca6" -nb "#000001" -p "Remove bookmark " -fn \
     "JetBrains Mono:size=10:style=Bold:antialias=true:autohint=true" \
     < ~/.local/share/bookmarks/bookmarks)
 if [ -z "$USEL" ]
