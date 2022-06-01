@@ -10,10 +10,10 @@ pkill wireplumber
 
 pkill sxhkd
 pkill dwmblocks
-pkill mpdup
 
 killall mpd
 pkill mpDris2
+pkill mpdup
 
 # wallpaper
 hsetroot -cover ~/Pictures/wallpapers/wp.jpg
@@ -35,7 +35,6 @@ exec sxhkd -c ~/.config/sxhkd/sxhkdrc &
 
 exec mpd &
 exec mpDris2 &
-exec mpdup &
 
 brightnessctl s 11%
 
