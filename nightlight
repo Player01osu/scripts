@@ -1,0 +1,10 @@
+#!/bin/sh
+case "$1" in
+	on) redshift -P -O 5000 &>/dev/null
+	;;
+	off) redshift -x &>/dev/null
+	;;
+	*) redshift -P -O 5000 &>/dev/null
+	;;
+esac
+
