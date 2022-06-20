@@ -1,5 +1,5 @@
 #!/bin/sh
-DSEL="$(find ~/Videos/not-anime/ -type d -maxdepth 1 | \
+DSEL="$(find ~/Videos/not-anime/ -maxdepth 1 -type d | \
 	awk -F'/' '{ print $NF }' | dmenu -l 20\
 	-sb "#a62ca6" -nb "#000001" -i -p "Select anime " -fn \
 	"JetBrains Mono:size=10:style=Bold:antialias=true:autohint=true")"
