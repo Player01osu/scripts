@@ -16,7 +16,7 @@ pkill mpDris2
 pkill mpdup
 
 # wallpaper
-hsetroot -cover ~/Pictures/wallpapers/wp.jpg
+#hsetroot -cover ~/Pictures/wallpapers/wp.jpg
 
 # numlock activate
 exec numlockx &
@@ -33,12 +33,13 @@ exec /usr/bin/wireplumber &
 pkill sxhkd
 exec sxhkd -c ~/.config/sxhkd/sxhkdrc &
 
-exec mpd &
-exec mpDris2 &
+#exec mpd &
+#exec mpDris2 &
 
 brightnessctl s 11%
 
 # input thingy
+exec otd &
 exec touchsets &
 exec unclutter --timeout 3 &
 
