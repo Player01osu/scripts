@@ -1,10 +1,10 @@
-#!/usr/bin/env sh
+#!/usr/bin/bash
 #
 # Stream screen and audio (speakers and microphone) to Twitch.tv using FFmpeg.
 #
 # Usage: stream-to-twitch path/to/key
 
-#set -euo pipefail
+set -euo pipefail
 
 #######################################
 # Stream to Twitch.tv.
