@@ -10,5 +10,15 @@ du ~/.config -aLd 4 -S --exclude='obs-studio'\
     --exclude='GIMP' --exclude='discord'\
     --exclude='Element' --exclude='libreoffice'\
     --exclude='libvirt' --exclude='qt5ct'\
+    --exclude='coc' --exclude='cef_user_data'\
+    --exclude='spotdl' --exclude='recidia'\
+    --exclude='OpenTabletDriver' --exclude='inkscape'\
+    --exclude='lapce' --exclude='ttyper'\
+    --exclude='*.log' --exclude='qBittorrent'\
+    --exclude='watch_later' --exclude='*.db'\
+    --exclude='mypaint' --exclude='termusic'\
+    --exclude='qutebrowser' --exclude='lapce-stable'\
+    --exclude='unity' --exclude='ibus'\
+    --exclude='gtk-3.0'\
     2>/dev/null | awk '{ print $2}' | fzf --no-info | \
     xargs -r nvim
