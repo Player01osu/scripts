@@ -38,6 +38,7 @@ stream_to_twitch() {
     ffmpeg \
         -loglevel "${loglevel}" \
         -f x11grab -s "${res_input}" -r ${fps} -probesize ${probesize} -i :1.0 \
+	-thread_queue_size 1024 \
         -f pulse -ac 2 -ar ${audio_rate} -i "${audio_input_speakers}" \
         -f flv \
         -vcodec libx264 -g ${gop} -keyint_min ${gop_min} -b:v ${cbr} \
