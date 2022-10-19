@@ -23,3 +23,5 @@ then
 fi
 
 mpv "$(find ~/Videos/not-anime -type f | fgrep "$FSEL")"
+#!/bin/sh
+#!/bin/sh

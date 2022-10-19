@@ -1,2 +1,2 @@
 #!/bin/sh
-/usr/bin/ls *.pdf | fzf --no-info | sed 's| |\\ |g' | xargs -r devour zathura
+/usr/bin/ls *.pdf -X | fzf --no-info | sed 's| |\\ |g' | xargs -r devour zathura
