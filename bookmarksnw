@@ -2,4 +2,4 @@
 dmenu -l 20 -sb "#a62ca6" -nb "#000001" -p "Bookmarks" -fn \
     "JetBrains Mono:size=10:style=Bold:antialias=true:autohint=true" \
     < ~/.local/share/bookmarks/bookmarks | \
-    xargs -r firefox -new-window
+    xargs -r firefox-developer-edition -new-window
