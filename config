@@ -19,6 +19,7 @@ du ~/.config -aLd 4 -S --exclude='obs-studio'\
     --exclude='mypaint' --exclude='termusic'\
     --exclude='qutebrowser' --exclude='lapce-stable'\
     --exclude='unity' --exclude='ibus'\
-    --exclude='gtk-3.0'\
+    --exclude='gtk-3.0' --exclude='Google'\
+    --exclude='fcitx'\
     2>/dev/null | awk '{ print $2}' | fzf --no-info | \
     xargs -r nvim

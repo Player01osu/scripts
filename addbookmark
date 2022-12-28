@@ -1,6 +1,8 @@
 #!/bin/sh
-xsel -bo | sed 's|https://||g' | \
-    sed 's|www.||g' >> \
-    ~/.local/share/bookmarks/bookmarks
+clip=$(xsel -bo | sed 's|https://||g' | \
+sed 's|www.||g')
 
-echo "" >> ~/.local/share/bookmarks/bookmarks
+grep "^${clip}\$" ~/.local/share/bookmarks/bookmarks || \
+    (echo $clip >> \
+    ~/.local/share/bookmarks/bookmarks && \
+    echo "" >> ~/.local/share/bookmarks/bookmarks)

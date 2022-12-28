@@ -22,7 +22,7 @@ hsetroot -cover ~/Pictures/wallpapers/wp.jpg
 exec numlockx &
 
 # compositor
-exec picom --experimental-backends &
+exec picom &
 
 # audio server
 exec /usr/bin/pipewire &

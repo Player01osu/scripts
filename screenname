@@ -1,4 +1,21 @@
 #!/bin/sh
-maim -s ~/Pictures/Screenshots/$(dmenu -l 20\
+file_name=$(dmenu -l 20\
     -sb "#a62ca6" -i -p "Screenshot Name " -fn \
-    "JetBrains Mono:size=10:style=Bold:antialias=true:autohint=true" < /dev/null).png
+    "JetBrains Mono:size=10:style=Bold:antialias=true:autohint=true" < /dev/null)
+
+if [ -z $file_name ]; then
+	exit
+fi
+
+file_path="$HOME/Pictures/Screenshots/$file_name".png
+
+
+output=$(maim -s $file_path)
+
+if [ $? -eq 0 ]; then
+	display=$(echo Saved to $file_path)
+	notify-send "Screenshot" "$display"
+else
+	err=$(echo Something went wrong... "$output")
+	notify-send "Screenshot" "$err"
+fi

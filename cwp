@@ -11,6 +11,6 @@ fi
 
 rm -f ~/Pictures/wallpapers/wp.jpg 2>/dev/null
 
-ln $WPPATH ~/Pictures/wallpapers/wp.jpg \
+ln "$WPPATH" ~/Pictures/wallpapers/wp.jpg \
 && \
 hsetroot -cover ~/Pictures/wallpapers/wp.jpg

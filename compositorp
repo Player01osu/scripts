@@ -3,6 +3,6 @@ if pgrep picom; then
 	pkill picom
 	exit 1
 else
-	picom --experimental-backends
+	picom
 fi
 exit

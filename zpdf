@@ -1,2 +1,6 @@
 #!/bin/sh
-/usr/bin/ls *.pdf -X | fzf --no-info | sed 's| |\\ |g' | xargs -r devour zathura
+fd --extension pdf -d 1 | \
+sort -r | \
+fzf --no-info | \
+sed 's| |\\ |g' | \
+xargs -r devour zathura

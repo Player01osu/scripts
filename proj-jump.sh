@@ -10,7 +10,7 @@
 # * be able to add jumps w/ $proj-jump --add .
 
 # Note:
-# Absolute paths must be used in jump :rolling_eyes:
+# Absolute paths must be used in jump 🙄
 
 parse_path () {
 
