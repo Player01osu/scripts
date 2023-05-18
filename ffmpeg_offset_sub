@@ -1,0 +1,30 @@
+#!/bin/zsh
+set -ve
+
+if [[ -z $2 ]]; then
+    >&2 echo "Requires two arguments; sub_file, and offset... (optional -o output_file)"
+    return 1
+fi
+
+output_flag=0
+output="subtitles_delayed.srt"
+offset=$2
+
+for input in "${@:2}"
+do
+    if [ "$input" = "-o" ]; then
+        output_flag=1
+        continue
+    fi
+
+    if [ "$output_flag" -eq 1 ]; then
+        output=$input
+        output_flag=0
+        continue
+    fi
+
+    offset="$input"
+done
+
+
+ffmpeg -itsoffset $offset -i $1 -c copy $output

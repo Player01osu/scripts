@@ -1,0 +1,37 @@
+#!/bin/sh
+
+set -e
+
+SUSDIR=$HOME/Documents/org/
+SUSTAR=$SUSDIR/sus.tar
+SUSENCRYPT=$SUSDIR/sus.tar.gpg
+NEWSUS=$(date +%Y-%m-%d).norg
+RECIPIENT=34E8F9595132FE4897B3CF88FA2A15E74BB05411
+
+RNG=$(shuf -i 1-10 -n 1)
+
+if [ $RNG -eq 1 ]; then
+	SUSBACK=${SUSENCRYPT}-$(date +%Y-%m-%d_%H-%M)
+	cp $SUSENCRYPT $SUSBACK
+	echo Backing up to ${SUSBACK}...
+fi
+
+gpg -d $SUSENCRYPT > $SUSTAR
+tar xf $SUSTAR -C $SUSDIR
+if [ ! -f $SUSNEW ]; then
+	echo "
+#comment
+vim:expandtab:softtabstop=2:tabstop=2:shiftwidth=2" > $SUSNEW
+fi
+
+$EDITOR $SUSDIR/sus/$NEWSUS \
+	&& \
+tar cf $SUSDIR/sus.tar --directory=$SUSDIR ./sus
+rm -rf ${SUSTAR}.gpg
+gpg -e --recipient $RECIPIENT $SUSTAR && \
+rm -rf $SUSTAR && \
+rm -rf $SUSDIR/sus || (echo SOMETHING FAILED && \
+echo tar with \
+tar cf $SUSDIR/sus.tar --directory=$SUSDIR ./sus && \
+echo re-encrypt with \
+gpg -e --recipient $RECIPIENT $SUSTAR)

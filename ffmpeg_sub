@@ -1,0 +1,97 @@
+#!/bin/zsh
+set -e
+if [[ -z $2 ]]; then
+    >&2 echo "Requires two arguments; video_file, and sub_file... (optional -o output_file)"
+    exit 1
+fi
+
+output="out-$(basename ${1})"
+
+
+lang="jpn"
+title=()
+
+
+count=1
+sub_count=$(mkvmerge -i $1 | grep "subtitles" | wc -l)
+output_flag=0
+backup_flag=0
+overwrite_flag=0
+lang_flag=0
+title_flag=0
+
+maps=("-map" "0")
+metadata=()
+sub_files=()
+
+for input in "${@:2}"
+do
+    case "$input" in
+
+        "-l")
+            lang_flag=1
+            continue
+            ;;
+        "-t")
+            title_flag=1
+            continue
+            ;;
+        "-o")
+            output_flag=1
+            continue
+            ;;
+        "-b")
+            backup_flag=1
+            continue
+            ;;
+        "-O")
+            overwrite_flag=1
+            continue
+            ;;
+    esac
+
+    if [ "$lang_flag" -eq 1 ]; then
+        lang=$input
+        lang_flag=0
+    fi
+
+    if [ "$title_flag" -eq 1 ]; then
+        title=("-metadata:s:s:${sub_count}" "title=${input}")
+        title_flag=0
+    fi
+
+    if [ "$title_flag" = 1 ] || [ "$lang_flag" = 1 ]; then
+        metadata+=("-metadata:s:s:${sub_count}" "language=${lang}")
+        title=()
+        continue
+    fi
+
+    if [ "$output_flag" -eq 1 ]; then
+        output=$input
+        output_flag=0
+        continue
+    fi
+
+    sub_type=$(echo $2 | awk -F'.' '{print $NF}')
+    sub_files+=("-i" "$input")
+
+    maps+=("-map" "$count" "-c:s" "$sub_type")
+    metadata+=("-metadata:s:s:${sub_count}" "language=jpn")
+
+    count=$((count + 1))
+    sub_count=$((sub_count + 1))
+done
+
+
+echo ffmpeg -i "$1" "${sub_files[@]}" "${maps[@]}" "${metadata[@]}" -c copy ${output}
+ffmpeg -i "$1" "${sub_files[@]}" "${maps[@]}" "${metadata[@]}" -c copy $output
+
+if [ "$backup_flag" -eq 1 ]; then
+    mv "$output" "$1" -b
+    exit 0
+fi
+
+if [ "$overwrite_flag" -eq 1 ]; then
+    mv "$output" "$1" -i
+fi
+#!/bin/sh

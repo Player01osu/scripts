@@ -1,0 +1,29 @@
+#!/bin/sh
+set -e
+out_dir="${HOME}/Documents/other/japanese/minesite/media"
+file_tmp="${out_dir}/tmp.mp3"
+
+trim_and_copy() {
+    echo $file_name | xclip -i -selection clipboard
+    notify-send "Anki Audio" "Stopped recording audio...\n Saved to $file_location"
+
+    ffmpeg -y -i "$file_tmp" -af silenceremove=1:0:-50dB "$file_location"
+    rm -f "$file_tmp"
+}
+
+if [ -e "$file_tmp"  ]; then
+    # SIGINT anki_audio
+    pid=$(pgrep anki_audio -o)
+    kill -INT "$pid"
+
+    # SIGINT ffmpeg
+    pid=$(ps aux | rg '\d ffmpeg -y' | awk '{print $2}')
+    kill -INT "$pid"
+else
+    file_name=$(tr -dc A-Za-z0-9 </dev/urandom | head -c 64 ; echo '').mp3
+    file_location="${out_dir}/${file_name}"
+
+    notify-send "Anki Audio" "Started recording audio..."
+    trap trim_and_copy INT
+    ffmpeg -y -f pulse -ac 1 -i alsa_output.pci-0000_03_00.6.3.analog-stereo.monitor "$file_tmp"
+fi
