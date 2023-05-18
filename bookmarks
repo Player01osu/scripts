@@ -1,5 +1,5 @@
 #!/bin/sh
 dmenu -l 20 -sb "#a62ca6" -nb "#000001" -p "Bookmarks " -fn \
-    "JetBrains Mono:size=10:style=Bold:antialias=true:autohint=true" \
+    "Source Code Pro Bold:size=10:style=Bold:antialias=true:autohint=true" \
     < ~/.local/share/bookmarks/bookmarks | \
     xargs -r firefox-developer-edition -new-tab

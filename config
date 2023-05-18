@@ -1,5 +1,5 @@
 #!/bin/sh
-du ~/.config -aLd 4 -S --exclude='obs-studio'\
+file=$(du ~/.config -aLd 4 -S --exclude='obs-studio'\
     --exclude='lutris' --exclude='pulse'\
     --exclude='BraveSoftware' --exclude='.git'\
     --exclude='*runtime' --exclude='*.o'\
@@ -21,5 +21,10 @@ du ~/.config -aLd 4 -S --exclude='obs-studio'\
     --exclude='unity' --exclude='ibus'\
     --exclude='gtk-3.0' --exclude='Google'\
     --exclude='fcitx'\
-    2>/dev/null | awk '{ print $2}' | fzf --no-info | \
-    xargs -r nvim
+    2>/dev/null | awk '{ print $2}' | fzf --no-info)
+
+if [ $? -eq 130 ]; then
+    exit 130
+fi
+
+nvim $file

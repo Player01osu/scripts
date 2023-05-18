@@ -4,5 +4,5 @@ sed 's|www.||g')
 
 grep "^${clip}\$" ~/.local/share/bookmarks/bookmarks || \
     (echo $clip >> \
-    ~/.local/share/bookmarks/bookmarks && \
-    echo "" >> ~/.local/share/bookmarks/bookmarks)
+    ~/.local/share/bookmarks/bookmarks) #&& \
+    #echo "" >> ~/.local/share/bookmarks/bookmarks)

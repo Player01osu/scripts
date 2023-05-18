@@ -12,7 +12,7 @@
 # Note:
 # Absolute paths must be used in jump 🙄
 
-parse_path () {
+__parse_path__ () {
 
 	SUB=${1/~/$HOME}
 	CHECK=${1:0:1}
@@ -36,10 +36,14 @@ parse_path () {
 	/usr/bin/ls $SUB &>/dev/null || SUB="PATHINV"
 }
 
+__tac_fzf__ () {
+    echo $(fzf --tac < $XDG_DATA_HOME/project/jump)
+}
+
 pj () {
 	case $1 in
-		"--add")
-			parse_path $2
+		"--add"|"-a")
+			__parse_path__ $2
 			CHECK=${SUB:0:1}
 
 			# Errors
@@ -61,19 +65,28 @@ pj () {
 			fi
 			echo $SUB >> $XDG_DATA_HOME/project/jump
 			;;
-		"--remove")
+		"--remove"|"-r")
 			# fzf path to remove
-			tmp="$(cat $XDG_DATA_HOME/project/jump | fzf)"
+            tmp="$(__tac_fzf__)"
 			if [ -z $tmp ]; then
 				return 0
 			fi
 			REM=$(grep -v $tmp $XDG_DATA_HOME/project/jump)
 			echo $REM | sed 's/ /\n/g' > $XDG_DATA_HOME/project/jump
 			;;
+        "--bump"|"-b")
+            # Bumps path to top of list
+            tmp="$(__tac_fzf__)"
+			if [ -z $tmp ]; then
+				return 0
+			fi
+            bump=$(printf "$(grep -v $tmp $XDG_DATA_HOME/project/jump)\n${tmp}")
+			echo $bump | sed 's/ /\n/g' > $XDG_DATA_HOME/project/jump
+            ;;
 		"")
 
 			# No args fzf
-			tmp="$(cat $XDG_DATA_HOME/project/jump | fzf)"
+			tmp="$(__tac_fzf__)"
 			cd "$tmp"
 			;;
 		*)
