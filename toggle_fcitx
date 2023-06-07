@@ -1,0 +1,2 @@
+#!/bin/sh
+pkill -x fcitx && notify-send fcitx "fcitx killed" || (fcitx && notify-send fcitx "fcitx started")

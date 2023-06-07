@@ -1,0 +1,39 @@
+#!/bin/zsh
+set -e
+to_dir="/home/bruh/Videos/not-anime/"
+to_dir_flag=0
+anime=()
+
+if [ -z $1 ]; then
+    echo "Need at least one file; Specify -d to change to_dir (Default: $to_dir)"
+fi
+
+if [ ! -e $1 ]; then
+    echo "File does not exist"
+    exit 1
+fi
+
+for input in "${@}"
+do
+    case "$input" in
+
+        "-d")
+            to_dir_flag=1
+            continue
+            ;;
+    esac
+
+    if [ "$to_dir_flag" -eq 1 ]; then
+        to_dir=$input
+        to_dir_flag=0
+        continue
+    fi
+    anime+=("$input")
+done
+
+for i in "${anime[@]}"
+do
+    fmt_anime+="${i}\n"
+done
+
+echo "$fmt_anime" | xargs -P0 -I% move_le_anime % $to_dir

@@ -1,0 +1,8 @@
+#!/bin/sh
+set -e
+[ ! -f $1 ] && echo Require one argument && return 1
+
+target="$HOME/Downloads/git/scripts"
+
+mv "$1" "$target"
+ln -s "$target/$(basename $1)" "$(readlink -f $1)"

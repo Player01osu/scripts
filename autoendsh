@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# kill from previous session
+pkill pipewire-pulse
+pkill pipewire
+pkill wireplumber
+
+pkill sxhkd
+pkill dwmblocks
+
+killall mpd
+pkill mpDris2
+pkill mpdup
+
+pkill sxhkd

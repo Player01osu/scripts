@@ -1,0 +1,10 @@
+#!/bin/sh
+
+xinput | rg 'SYNA.*' | awk -F'id=' '{ print $2 }' | awk '{ print $1 }' | xargs -I@ _toggle_touch @
+
+#check_toggled=$(xinput list-props 12 | grep 163 | awk -F ":" '{ print $2 }' | xargs)
+#if [ $check_toggled -eq 1 ]; then
+#    xinput set-prop 12 163 0
+#    exit
+#fi
+#xinput set-prop 12 163 1

@@ -1,0 +1,9 @@
+#!/bin/sh
+set -e
+
+SUSDIR=$HOME/Documents/org/
+SUSENCRYPT=$SUSDIR/sus.tar.gpg
+
+SUSBACK=${SUSENCRYPT}-$(date +%Y-%m-%d_%H-%M)
+cp $SUSENCRYPT $SUSBACK
+echo Backing up to ${SUSBACK}...

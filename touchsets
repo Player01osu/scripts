@@ -1,0 +1,22 @@
+#!/bin/sh
+
+tnum=$(xinput | grep SYNA30D2:00 | awk -F "=" '{ print $2 }' | awk -F " " '{ print $1 }')
+
+tlow=$(echo $tnum | awk -F " " '{ print $1 }')
+thigh=$(echo $tnum | awk -F " " '{ print $3 }')
+
+i=$tlow
+while [ "$i" -le $thigh ]; do
+    ## acceleration
+    xinput --set-prop $i 'libinput Accel Profile Enabled' 0, 1
+
+    ## cursor speed
+    xinput --set-prop $i 'libinput Accel Speed' 0.4
+
+    ## tap
+    xinput --set-prop $i 'libinput Tapping Enabled' 0
+
+    ## disable while typing
+    xinput --set-prop $i 'libinput Disable While Typing Enabled' 0
+    i=$(( i + 1 ))
+done
