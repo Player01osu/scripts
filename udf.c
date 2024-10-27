@@ -240,7 +240,7 @@ int main(int argc, char **argv)
 
 			pop_path(to_buf, to);
 			if (!exists(to_buf)) {
-				fprintf(stderr, "%s: Could not stat dest file: \"%s\"\n", program_name, to);
+				fprintf(stderr, "%s: Could not stat dest file: \"%s\" for \"%s\"\n", program_name, to_buf, to);
 				return 1;
 			}
 			if (require_root) {
