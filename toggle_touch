@@ -1,10 +1,17 @@
 #!/bin/sh
 
-xinput | rg 'SYNA.*' | awk -F'id=' '{ print $2 }' | awk '{ print $1 }' | xargs -I@ _toggle_touch @
+if [ "$XDG_SESSION_TYPE" = 'wayland' ]; then
+    STATUS_FILE="${XDG_RUNTIME_DIR}/touch.off"
+    if ! [ -f "${STATUS_FILE}" ]; then
+        notify-send -u normal "Disabling Touchpad"
+        hyprctl keyword "device[syna30d2:00-06cb:ce08-2]:enabled" false
+        touch "${STATUS_FILE}"
+    else
+        notify-send -u normal "Enabling Touchpad"
+        hyprctl keyword "device[syna30d2:00-06cb:ce08-2]:enabled" true
+        rm "${STATUS_FILE}"
+    fi
 
-#check_toggled=$(xinput list-props 12 | grep 163 | awk -F ":" '{ print $2 }' | xargs)
-#if [ $check_toggled -eq 1 ]; then
-#    xinput set-prop 12 163 0
-#    exit
-#fi
-#xinput set-prop 12 163 1
+else
+    xinput | grep '.*SYNA.*' | awk -F'id=' '{ print $2 }' | awk '{ print $1 }' | xargs -I@ _toggle_touch @
+fi

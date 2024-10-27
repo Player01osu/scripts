@@ -5,4 +5,4 @@ file="$(fd --extension pdf -d 1 | \
 sort -r | \
 fzf --no-info)"
 
-[ $? != 130 ] && devour zathura "${file}"
+[ $? != 130 ] && zathura "${file}"

@@ -2,12 +2,16 @@
 file_name=$(date +%Y-%m-%d_%H-%M-%S).png
 file_path="$HOME/Pictures/Screenshots/unnamed/$file_name"
 
-output=$(maim -u -s $file_path)
+if [ "$XDG_SESSION_TYPE" = 'wayland' ]; then
+    grim -g "$(slurp)" "$file_path"
+else
+    maim -u -s $file_path
+fi
 
 if [ $? -eq 0 ]; then
 	display=$(echo Saved to $file_path)
 	notify-send "Screenshot" "$display"
 else
-	err=$(echo Something went wrong... "$output")
+	err=$(echo Something went wrong...)
 	notify-send "Screenshot" "$err"
 fi

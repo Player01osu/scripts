@@ -82,4 +82,3 @@ fi
 if [ "$overwrite_flag" -eq 1 ]; then
     mv "$output" "$1" -i
 fi
-#!/bin/sh

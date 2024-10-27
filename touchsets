@@ -11,7 +11,7 @@ while [ "$i" -le $thigh ]; do
     xinput --set-prop $i 'libinput Accel Profile Enabled' 0, 1
 
     ## cursor speed
-    xinput --set-prop $i 'libinput Accel Speed' 0.4
+    xinput --set-prop $i 'libinput Accel Speed' 0.7
 
     ## tap
     xinput --set-prop $i 'libinput Tapping Enabled' 0

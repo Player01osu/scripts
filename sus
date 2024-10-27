@@ -5,7 +5,7 @@ set -e
 SUSDIR=$HOME/Documents/org/
 SUSTAR=$SUSDIR/sus.tar
 SUSENCRYPT=$SUSDIR/sus.tar.gpg
-NEWSUS=$(date +%Y-%m-%d).norg
+NEWSUS=$(date +%Y-%m-%d).txt
 RECIPIENT=34E8F9595132FE4897B3CF88FA2A15E74BB05411
 
 RNG=$(shuf -i 1-10 -n 1)

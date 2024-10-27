@@ -1,5 +1,11 @@
 #!/bin/sh
-dmenu -l 20 -sb "#a62ca6" -nb "#000001" -p "Bookmarks " -fn \
-    "Source Code Pro Bold:size=10:style=Bold:antialias=true:autohint=true" \
-    < ~/.local/share/bookmarks/bookmarks | \
-    xargs -r firefox-developer-edition -new-tab
+if [ "$XDG_SESSION_TYPE" = 'wayland' ]; then
+    fuzzel -d -p 'Open bookmark: ' \
+        < ~/.local/share/bookmarks/bookmarks | \
+        xargs -r firefox-developer-edition -new-tab
+else
+    dmenu -l 20 -sb "#a62ca6" -nb "#000001" -p "Bookmarks " -fn \
+        "Source Code Pro Bold:size=10:style=Bold:antialias=true:autohint=true" \
+        < ~/.local/share/bookmarks/bookmarks | \
+        xargs -r firefox-developer-edition -new-tab
+fi

@@ -1,7 +1,12 @@
 #!/bin/sh
-USEL=$(dmenu -l 20 -sb "#a62ca6" -nb "#000001" -p "Remove bookmark " -fn \
+if [ "$XDG_SESSION_TYPE" == 'wayland' ]; then
+    USEL=$(fuzzel -p "Remove bookmark: " \
+        < ~/.local/share/bookmarks/bookmarks)
+else
+    USEL=$(dmenu -l 20 -sb "#a62ca6" -nb "#000001" -p "Remove bookmark " -fn \
     "JetBrains Mono:size=10:style=Bold:antialias=true:autohint=true" \
     < ~/.local/share/bookmarks/bookmarks)
+fi
 if [ -z "$USEL" ]
 then
     exit

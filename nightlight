@@ -1,10 +1,21 @@
 #!/bin/sh
-case "$1" in
-	on) redshift -P -O 5000 &>/dev/null
-	;;
-	off) redshift -x &>/dev/null
-	;;
-	*) redshift -P -O 5000 &>/dev/null
-	;;
-esac
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    case "$1" in
+        on) wlsunset -t 5400 -T 5401 &>/dev/null &!
+            ;;
+        off) killall wlsunset
+            ;;
+        *) wlsunset -t 5400 -T 5401 &>/dev/null &!
+            ;;
+    esac
+else
+    case "$1" in
+        on) redshift -P -O 5000 &>/dev/null
+            ;;
+        off) redshift -x &>/dev/null
+            ;;
+        *) redshift -P -O 5000 &>/dev/null
+            ;;
+    esac
+fi
 

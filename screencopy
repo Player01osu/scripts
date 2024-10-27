@@ -1,8 +1,13 @@
 #!/bin/bash
-maim -u -s | xclip -selection clipboard -t image/png
+
+if [ "$XDG_SESSION_TYPE" = 'wayland' ]; then
+    grim -g "$(slurp -d)" - | wl-copy
+else
+    maim -u -s | xclip -selection clipboard -t image/png
+fi
 
 if [ $? -eq 0 ]; then
-	notify-send "Screenshot" "Saved to clipboard"
+    notify-send "Screenshot" "Saved to clipboard"
 else
-	notify-send "Screenshot" "Something went wrong..."
+    notify-send "Screenshot" "Something went wrong..."
 fi

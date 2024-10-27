@@ -3,10 +3,12 @@ if [ -z $2 ]; then
     echo "Must have two inputs: <From> <To>"
     exit 1
 fi
-rsync -vapP --remove-source-files "$1" "$2"
+rsync -vzapP --remove-source-files "$1" "$2"
 
 if [ $(tree "$1" | tail -n 1 | awk '{print $3}') = 0 ]; then
-    rm -r "$1"
+
+    #rm -r "$1"
+    rmdir "$(find "$1" -type d)"
 else
     echo "$1 is not empty!"
     exit 1

@@ -1,16 +1,23 @@
 #!/bin/sh
-WPPATH=$1
+WPPATH=$(realpath "${1}")
 
-if [ -z $WPPATH ] || [ $WPPATH = '-h' ] || [ $WPPATH = '--help' ]
-then
-	echo \
-	"\ncwp - change wallpaper
-\nUsage: cwp <filename>\n"
-	return 0
+if [ -z $WPPATH ] || [ ! -f $WPPATH ]|| [ $WPPATH = '-h' ] || [ $WPPATH = '--help' ]; then
+    echo "cwp - change wallpaper"
+    echo "Usage: cwp <filename>"
+    exit 1
 fi
 
-rm -f ~/Pictures/wallpapers/wp.jpg 2>/dev/null
+if [ "$XDG_SESSION_TYPE" = 'wayland' ]; then
+    HYPRPAPER_CONF="${XDG_CONFIG_HOME}/hypr/hyprpaper.conf"
 
-ln "$WPPATH" ~/Pictures/wallpapers/wp.jpg \
-&& \
-hsetroot -cover ~/Pictures/wallpapers/wp.jpg
+    echo "preload   = ${WPPATH}"                                      >  "${HYPRPAPER_CONF}"
+    echo "wallpaper = eDP-1,${WPPATH}"                                >> "${HYPRPAPER_CONF}"
+    echo "wallpaper = HDMI-A-1,${WPPATH}"                             >> "${HYPRPAPER_CONF}"
+
+    killall hyprpaper
+    hyprpaper &!
+else
+    rm -f ~/Pictures/wallpapers/wp.jpg 2>/dev/null
+    ln "$WPPATH" ~/Pictures/wallpapers/wp.jpg
+    hsetroot -cover ~/Pictures/wallpapers/wp.jpg
+fi

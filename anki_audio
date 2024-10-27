@@ -4,10 +4,15 @@ out_dir="${HOME}/Documents/other/japanese/minesite/media"
 file_tmp="${out_dir}/tmp.mp3"
 
 trim_and_copy() {
-    echo $file_name | xclip -i -selection clipboard
+    if [ "$XDG_SESSION_TYPE" == 'wayland' ]; then
+        echo $file_name | wl-copy
+    else
+        echo $file_name | xclip -i -selection clipboard
+    fi
     notify-send "Anki Audio" "Stopped recording audio...\n Saved to $file_location"
 
-    ffmpeg -y -i "$file_tmp" -af silenceremove=1:0:-50dB "$file_location"
+    ffmpeg -y -i "$file_tmp" -af silenceremove=1:0:-65dB:0:0:1:1:-65dB "$file_location"
+
     rm -f "$file_tmp"
 }
 
