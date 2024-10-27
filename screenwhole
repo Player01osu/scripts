@@ -1,0 +1,13 @@
+#!/bin/sh
+if [ "$XDG_SESSION_TYPE" = 'wayland' ]; then
+    grim - | wl-copy
+else
+    notify-send "UNIMPLEMENTED FOR X11: screenwhole"
+    exit 1
+fi
+
+if [ $? -eq 0 ]; then
+    notify-send "Screenshot" "Saved to clipboard"
+else
+    notify-send "Screenshot" "Something went wrong..."
+fi

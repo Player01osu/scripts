@@ -1,0 +1,16 @@
+#!/bin/sh
+file_name=$(date +%Y-%m-%d_%H-%M-%S).png
+file_path="$HOME/Pictures/Screenshots/unnamed/$file_name"
+
+if [ "$XDG_SESSION_TYPE" = 'wayland' ]; then
+    grim "$file_path"
+else
+    notify-send "UNIMPLEMENTED FOR X11: screenwholesave"
+    exit 1
+fi
+
+if [ $? -eq 0 ]; then
+    notify-send "Screenshot" "Saved to clipboard"
+else
+    notify-send "Screenshot" "Something went wrong..."
+fi
