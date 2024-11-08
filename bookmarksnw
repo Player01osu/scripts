@@ -1,6 +1,6 @@
 #!/bin/sh
 if [ "$XDG_SESSION_TYPE" == 'wayland' ]; then
-    fuzzel -d -p 'Open bookmark (new window): ' \
+    tofi --prompt-text='Open bookmark (new window): ' \
         < ~/.local/share/bookmarks/bookmarks | \
         xargs -r firefox-developer-edition -new-window
 else
