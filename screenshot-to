@@ -9,7 +9,7 @@ history="$XDG_CACHE_HOME/screenshot-save-paths"
 filepath=""
 filename=""
 
-[ -e "$history" ] || echo "$default_filepath" > "$history"
+[ -e "$history" ] || echo "$HOME\n$default_filepath" > "$history"
 
 if [ "$XDG_SESSION_TYPE" = 'wayland' ]; then
     if [ "$1" = 'w' ]; then
@@ -23,6 +23,7 @@ if [ "$XDG_SESSION_TYPE" = 'wayland' ]; then
         rm "/tmp/$default_filename"
         exit 1
     fi
+    filepath=`realpath "${filepath}"`
 
     random_filename="$(head -c 13 /proc/sys/kernel/random/uuid).png"
     simple_date_filename="$(date +%Y-%m-%d).png"
