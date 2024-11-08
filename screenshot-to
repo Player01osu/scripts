@@ -1,0 +1,44 @@
+#!/bin/sh
+
+set -e
+
+default_filename="$(date +%Y-%m-%d_%H-%M-%S).png"
+default_filepath="$HOME/Pictures/Screenshots/unnamed"
+history="$XDG_CACHE_HOME/screenshot-save-paths"
+
+filepath=""
+filename=""
+
+[ -e "$history" ] || echo "$default_filepath" > "$history"
+
+if [ "$XDG_SESSION_TYPE" = 'wayland' ]; then
+    if [ "$1" = 'w' ]; then
+        grim "/tmp/$default_filename"
+    else
+        grim -g "$(slurp)" "/tmp/$default_filename"
+    fi
+
+    filepath=`tac "${history}" | tofi`
+    if [ -z "$filepath" ]; then
+        rm "/tmp/$default_filename"
+        exit 1
+    fi
+
+    filename=`echo "$default_filename" | tofi`
+    if [ -z "$filepath" ]; then
+        exit 1
+    fi
+
+    mv "/tmp/$default_filename" "${filepath}/${filename}"
+
+    sed -i 's:^'"${filepath}"'$::g' "$history"
+    sed -i '/^$/d' "$history"
+    echo "${filepath}" >> "$history"
+fi
+
+if [ $? -eq 0 ]; then
+	notify-send "Screenshot" "Saved to ${filepath}/${filename}"
+else
+	err=$(echo Something went wrong...)
+	notify-send "Screenshot" "$err"
+fi
