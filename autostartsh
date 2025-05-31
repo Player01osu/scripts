@@ -10,7 +10,7 @@ xset r rate 250 40
 exec numlockx &
 
 # compositor
-exec picom &
+# exec picom &
 
 # audio server
 # exec /usr/bin/pipewire &
@@ -20,8 +20,8 @@ exec picom &
 # keyboard shortcuts
 exec sxhkd -c ~/.config/sxhkd/sxhkdrc &
 
-#exec mpd &
-#exec mpDris2 &
+# exec mpd &
+# exec mpDris2 &
 
 # brightnessctl s 11%
 
