@@ -10,7 +10,7 @@ xset r rate 250 40
 exec numlockx &
 
 # compositor
-# exec picom &
+exec picom &
 
 # audio server
 # exec /usr/bin/pipewire &
@@ -27,6 +27,7 @@ exec sxhkd -c ~/.config/sxhkd/sxhkdrc &
 
 # input thingy
 exec otd &
+exec otd-daemon &
 exec touchsets &
 exec unclutter --timeout 3 &
 
