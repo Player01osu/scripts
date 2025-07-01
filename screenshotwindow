@@ -1,8 +1,7 @@
 #!/bin/bash
 
 if [ "$XDG_SESSION_TYPE" = 'wayland' ]; then
-    grim -t jpeg -g "$(slurp -d)" - | wl-copy
-    # grim -g "$(slurp -d)" - | wl-copy
+    hyprshot -m window --clipboard-only
 else
     maim -u -s | xclip -selection clipboard -t image/png
 fi

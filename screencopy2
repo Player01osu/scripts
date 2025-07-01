@@ -1,0 +1,26 @@
+#!/bin/bash
+
+if [ "$XDG_SESSION_TYPE" = 'wayland' ]; then
+    filetype=`echo -e "png\njpeg\nppm" | tofi`
+    if [ -z "$filetype" ]; then
+        exit $?
+    fi
+    is_select_region=`echo -e "yes\nno" | tofi --prompt-text="Select Region: "`
+    if [ -z "$is_select_region" ]; then
+        exit $?
+    fi
+
+    if [ "$is_select_region" == "yes" ]; then
+        grim -t "${filetype}" -g "$(slurp -d)" - | wl-copy
+    else
+        grim -t "${filetype}" - | wl-copy
+    fi
+else
+    maim -u -s | xclip -selection clipboard -t image/png
+fi
+
+if [ $? -eq 0 ]; then
+    notify-send "Screenshot" "Saved to clipboard"
+else
+    notify-send "Screenshot" "Something went wrong..."
+fi

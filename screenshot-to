@@ -27,7 +27,7 @@ if [ "$XDG_SESSION_TYPE" = 'wayland' ]; then
 
     random_filename="$(head -c 13 /proc/sys/kernel/random/uuid).png"
     simple_date_filename="$(date +%Y-%m-%d).png"
-    filename=`echo "$default_filename\n$random_filename\n$simple_date_filename" | tofi`
+    filename=`echo -e "${default_filename}\n${random_filename}\n${simple_date_filename}" | tofi`
     if [ -z "$filename" ]; then
         exit 1
     fi
