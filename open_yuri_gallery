@@ -1,0 +1,2 @@
+#!/bin/sh
+swayimg -e 'swayimg.imagelist.set_order("random")' -g ~/Pictures/banger/

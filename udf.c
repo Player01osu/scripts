@@ -23,7 +23,7 @@ exit
 const char *sudo = "/usr/bin/doas";
 
 /* Replace old links if exist */
-const int replace_old_link = 1;
+const int replace_old_link = 0;
 
 /* Set the path and link location of files */
 const char *links[][4] = {
@@ -63,6 +63,7 @@ const char *links[][4] = {
 	{ c("mutagen-pony"),                BIN "/mutagen-pony",           0,       O0 },
 	{ c("nightlight"),                  BIN "/nightlight",             0,       O0 },
 	{ c("normalizer"),                  BIN "/normalizer",             0,       O0 },
+	{ c("open_yuri_gallery"),           BIN "/open_yuri_gallery",      0,       O1 },
 	{ c("osu"),                         BIN "/osu",                    0,       O0 },
 	{ c("pixiv-dl.py"),                 BIN "/pixiv-dl.py",            0,       O0 },
 	{ c("pradd"),                       BIN "/pradd",                  0,       O0 },
@@ -80,7 +81,7 @@ const char *links[][4] = {
 	{ c("screenname"),                  BIN "/screenname",             0,       O0 },
 	{ c("screensave"),                  BIN "/screensave",             0,       O0 },
 	{ c("screenshot-to"),               BIN "/screenshot-to",          0,       O0 },
-	{ c("screenshotwindow"),            BIN "/screenshotwindow",       0,       O1 },
+	{ c("screenshotwindow"),            BIN "/screenshotwindow",       0,       O0 },
 	{ c("screenwhole"),                 BIN "/screenwhole",            0,       O0 },
 	{ c("screenwholename"),             BIN "/screenwholename",        0,       O0 },
 	{ c("screenwholesave"),             BIN "/screenwholesave",        0,       O0 },
