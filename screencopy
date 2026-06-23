@@ -11,3 +11,4 @@ if [ $? -eq 0 ]; then
     notify-send "Screenshot" "Saved to clipboard"
 else
     notify-send "Screenshot" "Something went wrong..."
+fi
