@@ -1,11 +1,11 @@
 #!/bin/bash
 if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
     case "$1" in
-        on) hyprsunset -t 5100 &>/dev/null &!
+        on) hyprsunset -g 48 -t 4900 &>/dev/null &!
             ;;
         off) killall hyprsunset
             ;;
-        *) hyprsunset -t 5100 &>/dev/null &!
+        *) hyprsunset -g 48 -t 4900 &>/dev/null &!
             ;;
     esac
 else
