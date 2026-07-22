@@ -63,7 +63,7 @@ const char *links[][4] = {
 	{ c("mutagen-pony"),                BIN "/mutagen-pony",           0,       O0 },
 	{ c("nightlight"),                  BIN "/nightlight",             0,       O0 },
 	{ c("normalizer"),                  BIN "/normalizer",             0,       O0 },
-	{ c("open_yuri_gallery"),           BIN "/open_yuri_gallery",      0,       O1 },
+	{ c("open_yuri_gallery"),           BIN "/open_yuri_gallery",      0,       O0 },
 	{ c("osu"),                         BIN "/osu",                    0,       O0 },
 	{ c("pixiv-dl.py"),                 BIN "/pixiv-dl.py",            0,       O0 },
 	{ c("pradd"),                       BIN "/pradd",                  0,       O0 },
