@@ -4,12 +4,17 @@ if [ "$XDG_SESSION_TYPE" = 'wayland' ]; then
     STATUS_FILE="${XDG_RUNTIME_DIR}/touch.off"
     if ! [ -f "${STATUS_FILE}" ]; then
         notify-send -u normal "Disabling Touchpad"
-        hyprctl keyword "device[syna30d2:00-06cb:ce08-2]:enabled" false
+        # Legacy
+        # hyprctl keyword "device[syna30d2:00-06cb:ce08-2]:enabled" false
+        hyprctl eval 'hl.device({ name = "syna30d2:00-06cb:ce08-2", enabled = false, })'
         touch "${STATUS_FILE}"
     else
         notify-send -u normal "Enabling Touchpad"
-        hyprctl keyword "device[syna30d2:00-06cb:ce08-2]:enabled" true
+        # Legacy
+        # hyprctl keyword "device[syna30d2:00-06cb:ce08-2]:enabled" true
+        hyprctl eval 'hl.device({ name = "syna30d2:00-06cb:ce08-2", enabled = true, })'
         rm "${STATUS_FILE}"
+
     fi
 
 else
